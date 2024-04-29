@@ -14,7 +14,7 @@ aws emr create-cluster \
     --use-default-roles \
     --region us-east-1 \
     --ec2-attributes '{"KeyName": "vockey"}' \
-    --configurations '[{"Classification": "jupyter-s3-conf", "Properties": {"s3.persistence.enabled": "true", "s3.persistence.bucket": "YOUR_S3_BUCKET_NAME"}}]'
+    --configurations '[{"Classification": "jupyter-s3-conf", "Properties": {"s3.persistence.enabled": "true", "s3.persistence.bucket": "cgaspard-survey"}}]'
 ```
 
 While your cluster is launching (it will take around 10 minutes) you'll want to make sure that you can `ssh` into the primary node of your cluster. To do so, go into the console and find your cluster in the "Clusters" tab in the "EMR on EC2" section of the EMR menu. Click on your Cluster ID and scroll down to the "EC2 security groups" dropdown menu in the properties tab for the cluster. Click on the security group for the Primary Node ("sg-" followed by a string of numbers and letters) and click "Edit inbound rules" to add a rule allowing `ssh` access from source "0.0.0.0/0" (i.e. over the internet). 
